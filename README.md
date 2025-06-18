@@ -1,1 +1,1 @@
-# fprime-cerberus-zephyr
+# fprime-stm32h7-zephyr
