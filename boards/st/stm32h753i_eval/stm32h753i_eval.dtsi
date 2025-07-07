@@ -1,0 +1,33 @@
+#include <zephyr/dt-bindings/input/input-event-codes.h>
+
+/ {
+    leds {
+        compatible = "gpio-leds";
+        green_led: led_1 {
+            gpios = <&gpiof 10 GPIO_ACTIVE_LOW>;
+            label = "User LD1";
+            status = "disabled";
+        };
+        
+        red_led: led_3 {
+            gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+            label = "User LD3";
+            status = "disabled";
+        };
+    };
+};
+
+&rcc {
+	d1cpre = <1>;
+	hpre = <2>;
+	d1ppre = <2>;
+	d2ppre1 = <2>;
+	d2ppre2 = <2>;
+	d3ppre = <2>;
+};
+
+&usart1 {
+	pinctrl-0 = <&usart1_tx_pb14 &usart1_rx_pb15>;
+	pinctrl-names = "default";
+	current-speed = <115200>;
+};

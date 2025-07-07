@@ -1,0 +1,12 @@
+# STM32H753I-EVAL board configuration
+
+if BOARD_STM32H753I_EVAL
+
+if NETWORKING
+
+config NET_L2_ETHERNET
+	default y
+
+endif # NETWORKING
+
+endif # BOARD_STM32H753I_EVAL
