@@ -1,20 +1,20 @@
 #include <zephyr/dt-bindings/input/input-event-codes.h>
 
 / {
-    leds {
-        compatible = "gpio-leds";
-        green_led: led_1 {
-            gpios = <&gpiof 10 GPIO_ACTIVE_LOW>;
-            label = "User LD1";
-            status = "disabled";
-        };
-        
-        red_led: led_3 {
-            gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
-            label = "User LD3";
-            status = "disabled";
-        };
-    };
+	leds {
+		compatible = "gpio-leds";
+		green_led: led_1 {
+			gpios = <&gpiof 10 GPIO_ACTIVE_LOW>;
+			label = "User LD1";
+			status = "disabled";
+		};
+
+		red_led: led_3 {
+			gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+			label = "User LD3";
+			status = "disabled";
+		};
+	};
 };
 
 &rcc {

@@ -4,29 +4,29 @@
 #include "stm32h753i_eval.dtsi"
 
 / {
-    model = "STMicroelectronics STM32H753I-EVAL board";
-    compatible = "st,stm32h753i-eval";
+	model = "STMicroelectronics STM32H753I-EVAL board";
+	compatible = "st,stm32h753i-eval";
 
-   aliases {
-        led0 = &green_led;
-   };
+	aliases {
+		led0 = &green_led;
+	};
 
-   chosen {
-        zephyr,sram = &sram0;
-        zephyr,console = &usart1;
-        zephyr,shell-uart = &usart1;
-        zephyr,flash = &flash0;
-        zephyr,code-partition = &slot0_partition;
-   };
+	chosen {
+		zephyr,sram = &sram0;
+		zephyr,console = &usart1;
+		zephyr,shell-uart = &usart1;
+		zephyr,flash = &flash0;
+		zephyr,code-partition = &slot0_partition;
+	};
 
-   leds {
-        green_led: led_1 {
-            status = "okay";
-        };
-        red_led: led_3 {
-            status = "okay";
-        };
-   };
+	leds {
+		green_led: led_1 {
+			status = "okay";
+		};
+		red_led: led_3 {
+			status = "okay";
+		};
+	};
 };
 
 &clk_hse {
@@ -91,6 +91,9 @@
 	clock-frequency = <DT_FREQ_M(400)>;
 };
 
+&pwr {
+	power-supply = "ldo";
+};
 
 &usart1 {
 	status = "okay";
