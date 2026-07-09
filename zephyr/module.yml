@@ -1,0 +1,4 @@
+name: fprime_stm32h7_zephyr
+build:
+  settings:
+    board_root: .

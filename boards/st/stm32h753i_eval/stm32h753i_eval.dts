@@ -1,7 +1,6 @@
 /dts-v1/;
 #include <st/h7/stm32h753Xi.dtsi>
 #include <st/h7/stm32h753xihx-pinctrl.dtsi>
-#include "stm32h753i_eval.dtsi"
 
 / {
 	model = "STMicroelectronics STM32H753I-EVAL board";
@@ -21,10 +20,17 @@
 	};
 
 	leds {
+		compatible = "gpio-leds";
+
 		green_led: led_1 {
+			gpios = <&gpiof 10 GPIO_ACTIVE_LOW>;
+			label = "User LD1";
 			status = "okay";
 		};
+
 		red_led: led_3 {
+			gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+			label = "User LD3";
 			status = "okay";
 		};
 	};
@@ -110,6 +116,12 @@
 &rcc {
 	clocks = <&pll>;
 	clock-frequency = <DT_FREQ_M(400)>;
+	d1cpre = <1>;
+	hpre = <2>;
+	d1ppre = <2>;
+	d2ppre1 = <2>;
+	d2ppre2 = <2>;
+	d3ppre = <2>;
 };
 
 &pwr {
@@ -117,6 +129,9 @@
 };
 
 &usart1 {
+	pinctrl-0 = <&usart1_tx_pb14 &usart1_rx_pb15>;
+	pinctrl-names = "default";
+	current-speed = <115200>;
 	status = "okay";
 };
 
