@@ -8,6 +8,7 @@
 	compatible = "st,stm32h753i-eval";
 
 	aliases {
+		adc0 = &adc1;
 		led0 = &green_led;
 	};
 
@@ -26,6 +27,11 @@
 		red_led: led_3 {
 			status = "okay";
 		};
+	};
+
+	zephyr,user {
+		io-channels = <&adc1 0>;
+		io-channel-names = "potentiometer";
 	};
 
 	fstab {
@@ -119,4 +125,27 @@
 	pinctrl-names = "default";
 	status = "okay";
 	clock-frequency = <I2C_BITRATE_FAST>;
+};
+
+&adc1 {
+	#address-cells = <1>;
+	#size-cells = <0>;
+
+	clocks = <&rcc STM32_CLOCK(AHB1, 5)>,
+		 <&rcc STM32_SRC_CKPER ADC_SEL(2)>;
+	clock-names = "adcx", "adc_ker";
+	pinctrl-0 = <&adc1_inp0_pa0_c>;
+	pinctrl-names = "default";
+	st,adc-clock-source = "ASYNC";
+	st,adc-prescaler = <4>;
+	status = "okay";
+
+	potentiometer: channel@0 {
+		reg = <0>;
+		zephyr,gain = "ADC_GAIN_1";
+		zephyr,reference = "ADC_REF_INTERNAL";
+		zephyr,vref-mv = <3300>;
+		zephyr,acquisition-time = <ADC_ACQ_TIME_DEFAULT>;
+		zephyr,resolution = <12>;
+	};
 };
