@@ -1,0 +1,9 @@
+config FPRIME_STM32H7_RAMECC
+    bool "Enable STM32H7 RAM ECC protection"
+    depends on SOC_SERIES_STM32H7X
+    select USE_STM32_HAL_RAMECC
+    select USE_STM32_HAL_MDMA
+    select REBOOT
+    help
+      Enable SRAM ECC monitoring, fault handling, and background
+      memory scrubbing for the STM32H7 application.

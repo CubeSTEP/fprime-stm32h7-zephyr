@@ -1,4 +1,6 @@
 name: fprime_stm32h7_zephyr
 build:
+  cmake: zephyr
+  kconfig: zephyr/Kconfig
   settings:
     board_root: .
